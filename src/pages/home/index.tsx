@@ -80,7 +80,9 @@ const Home: React.FunctionComponent = () => {
       >
         <Suspense fallback={<Loader />}>
           <directionalLight position={[1, 1, 1]} intensity={2} />
+
           <ambientLight intensity={0.5} />
+
           <hemisphereLight
             // @ts-expect-error: Three.js
             skyColor="#b1e1ff"
@@ -88,7 +90,8 @@ const Home: React.FunctionComponent = () => {
             intensity={1}
           />
 
-          <Sky isRotating={isRotating} />
+          <Sky />
+
           <Island
             scale={islandData.scale}
             position={islandData.position}
@@ -97,6 +100,7 @@ const Home: React.FunctionComponent = () => {
             setIsRotating={setIsRotating}
             setCurrentStage={setCurrentStage}
           />
+          
           <Plane
             // @ts-expect-error: Three.js
             scale={planeData.scale}

@@ -7,18 +7,12 @@ import { useFrame } from "@react-three/fiber";
 
 import skyScene from "@assets/3d/sky.glb";
 
-interface Props {
-    isRotating: boolean;
-  }
-
-const Sky: React.FunctionComponent<Props> = ({ isRotating }: Props) => {
+const Sky: React.FunctionComponent = () => {
   const sky = useGLTF(skyScene);
   const ref = useRef();
 
   useFrame((_, delta) => {
-    if (isRotating) {
-        ref.current.rotation.y += 0.05 * delta;
-    }
+    ref.current.rotation.y += 0.025 * delta;
   });
 
   return (
