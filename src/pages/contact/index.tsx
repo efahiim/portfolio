@@ -152,7 +152,7 @@ const Contact: React.FunctionComponent = () => {
         </form>
       </div>
 
-      <div className="lg:w-1/2 w-full lg:h-auto md:h-[550px] h-[350px]">
+      <div className="lg:w-1/2 w-full lg:h-[530px] md:h-[550px] h-[350px]">
         <Canvas
           camera={{
             position: [0, 0, 5],
@@ -166,7 +166,7 @@ const Contact: React.FunctionComponent = () => {
           <Suspense fallback={<Loader />}>
             <Fox
               scale={[0.5, 0.5, 0.5]}
-              position={[0.5, 0.35, 0]}
+              position={[0, 0, 0]}
               rotation={[12.6, -0.6, 0]}
               currentAnimation={currentAnimation}
             />

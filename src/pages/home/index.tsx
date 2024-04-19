@@ -14,6 +14,7 @@ import { soundoff, soundon } from "@assets/icons";
 const Home: React.FunctionComponent = () => {
   const audioRef = useRef(new Audio(sakura));
   const [isRotating, setIsRotating] = useState<boolean>(false);
+  const [isMoving, setIsMoving] = useState<boolean>(false);
   const [currentStage, setCurrentStage] = useState<number>(1);
   const [isPlayingMusic, setIsPlayingMusic] = useState<boolean>(false);
 
@@ -28,27 +29,27 @@ const Home: React.FunctionComponent = () => {
   audioRef.current.volume = 0.1;
   audioRef.current.loop = true;
 
-  const adjustIsland = (): IslandData => {
-    let islandData: IslandData = {
-      scale: [1, 1, 1] as unknown as Vector3,
-      position: [0, -6.5, -43] as unknown as Vector3,
-      rotation: [0.1, 4.7, 0] as unknown as Euler,
-    };
+  // const adjustIsland = (): IslandData => {
+  //   let islandData: IslandData = {
+  //     scale: [1, 1, 1] as unknown as Vector3,
+  //     position: [0, -6.5, -43] as unknown as Vector3,
+  //     rotation: [0.1, 4.7, 0] as unknown as Euler,
+  //   };
 
-    if (window.innerWidth < 768) {
-      islandData = {
-        ...islandData,
-        scale: [0.9, 0.9, 0.9] as unknown as Vector3,
-      };
-    }
+  //   if (window.innerWidth < 768) {
+  //     islandData = {
+  //       ...islandData,
+  //       scale: [0.9, 0.9, 0.9] as unknown as Vector3,
+  //     };
+  //   }
 
-    return islandData;
-  };
+  //   return islandData;
+  // };
 
   const adjustPlane = (): PlaneData => {
     let planeData: PlaneData = {
       scale: [3, 3, 3] as unknown as Vector3,
-      position: [0, -4, -4] as unknown as Vector3,
+      position: [-9, -2, -4] as unknown as Vector3,
       rotation: [0, 20, 0] as unknown as Euler,
     };
 
@@ -63,7 +64,7 @@ const Home: React.FunctionComponent = () => {
     return planeData;
   };
 
-  const islandData = adjustIsland();
+  // const islandData = adjustIsland();
   const planeData = adjustPlane();
 
   return (
@@ -92,21 +93,24 @@ const Home: React.FunctionComponent = () => {
 
           <Sky />
 
-          <Island
+          {/* <Island
             scale={islandData.scale}
             position={islandData.position}
             rotation={islandData.rotation}
             isRotating={isRotating}
             setIsRotating={setIsRotating}
             setCurrentStage={setCurrentStage}
-          />
+          /> */}
           
           <Plane
             // @ts-expect-error: Three.js
             scale={planeData.scale}
             position={planeData.position}
             rotation={planeData.rotation}
-            isRotating={isRotating}
+            isMoving={isMoving}
+            setIsMoving={setIsMoving}
+            currentStage={currentStage}
+            setCurrentStage={setCurrentStage}
           />
         </Suspense>
       </Canvas>
