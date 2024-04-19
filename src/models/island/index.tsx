@@ -46,7 +46,7 @@ const Island: React.FunctionComponent<Props> = ({
   setIsRotating,
   setCurrentStage,
   ...props
-}) => {
+}: Props) => {
   const { nodes, materials } = useGLTF(islandScene) as GLTFResult;
   const islandRef = useRef();
   const { gl, viewport } = useThree();
