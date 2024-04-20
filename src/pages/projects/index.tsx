@@ -1,8 +1,9 @@
 import React from "react";
 
 import CTA from "@components/cta";
-import { projects } from "@constants/index";
 import Project from "@components/project";
+
+import { projects } from "@constants/index";
 
 const Projects: React.FunctionComponent = () => (
   <section className="max-container">

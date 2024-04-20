@@ -5,7 +5,6 @@ import React, { useEffect, useRef } from "react";
 import { useAnimations, useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 
 import planeScene from "@assets/3d/plane.glb";
 
@@ -51,34 +50,75 @@ const Plane: React.FunctionComponent<Props> = ({
     return targetPosition;
   };
 
-  const handleKeyPress = (e: any) => {
-    if (e.key === "ArrowLeft") {
-      const targetPosition = calculateTargetPosition("rtl");
+  const handleKeyPress = (event: KeyboardEvent): void => {
+    if (!isMoving) {
+      if (event.key === "ArrowLeft") {
+        const targetPosition = calculateTargetPosition("rtl");
 
-      if (ref.current.position.x >= -4) {
-        setIsMoving(true);
+        if (ref.current.position.x >= -4) {
+          setIsMoving(true);
 
-        gsap.to(ref.current.position, {
-          x: targetPosition,
-          duration: 2,
-          onComplete: () => {
-            setIsMoving(false);
-          },
-        });
+          gsap.to(ref.current.position, {
+            x: targetPosition,
+            duration: 2,
+            onUpdate: () => setCurrentStage(5),
+            onComplete: () => setIsMoving(false),
+          });
+        }
+      } else if (event.key === "ArrowRight") {
+        const targetPosition = calculateTargetPosition("ltr");
+
+        if (ref.current.position.x <= 4) {
+          setIsMoving(true);
+
+          gsap.to(ref.current.position, {
+            x: targetPosition,
+            duration: 2,
+            onUpdate: () => setCurrentStage(5),
+            onComplete: () => setIsMoving(false),
+          });
+        }
       }
-    } else if (e.key === "ArrowRight") {
-      const targetPosition = calculateTargetPosition("ltr");
+    }
+  };
 
-      if (ref.current.position.x <= 4) {
-        setIsMoving(true);
-        
-        gsap.to(ref.current.position, {
-          x: targetPosition,
-          duration: 2,
-          onComplete: () => {
-            setIsMoving(false);
-          },
-        });
+  const handleTouchOrClick = (event: MouseEvent | TouchEvent) => {
+    event.stopPropagation();
+    event.preventDefault();
+
+    const canvas = document.getElementsByTagName("canvas")[0];
+    const touchOrClickX = event.touches
+      ? event.touches[0].clientX
+      : event.clientX;
+    const screenWidth = window.innerWidth;
+
+    if (event.target === canvas) {
+      if (touchOrClickX < screenWidth / 2) {
+        const targetPosition = calculateTargetPosition("rtl");
+
+        if (ref.current.position.x >= -4) {
+          setIsMoving(true);
+
+          gsap.to(ref.current.position, {
+            x: targetPosition,
+            duration: 2,
+            onUpdate: () => setCurrentStage(5),
+            onComplete: () => setIsMoving(false),
+          });
+        }
+      } else {
+        const targetPosition = calculateTargetPosition("ltr");
+
+        if (ref.current.position.x <= 4) {
+          setIsMoving(true);
+
+          gsap.to(ref.current.position, {
+            x: targetPosition,
+            duration: 2,
+            onUpdate: () => setCurrentStage(5),
+            onComplete: () => setIsMoving(false),
+          });
+        }
       }
     }
   };
@@ -87,34 +127,36 @@ const Plane: React.FunctionComponent<Props> = ({
     if (isMoving) {
       const position = ref.current.position.x;
 
-      console.log(position);
-
       switch (true) {
-        case position >= 8.66578:
+        case position === 9:
           setCurrentStage(4);
           break;
-        case position >= 3.75 && position < 8.66578:
+        case position === 4:
           setCurrentStage(3);
           break;
-        case position >= -4.25 && position < 3.75:
+        case position === -4:
           setCurrentStage(2);
           break;
-        case position >= -9 && position < -4.25:
+        case position === -9:
           setCurrentStage(1);
           break;
         default:
-          setCurrentStage(null);
+          setCurrentStage(5);
       }
     }
   });
 
   useEffect(() => {
     window.addEventListener("keydown", handleKeyPress);
+    window.addEventListener("touchstart", handleTouchOrClick);
+    window.addEventListener("pointerdown", handleTouchOrClick);
 
     return () => {
       window.removeEventListener("keydown", handleKeyPress);
+      window.removeEventListener("touchstart", handleTouchOrClick);
+      window.removeEventListener("pointerdown", handleTouchOrClick);
     };
-  }, [handleKeyPress]);
+  }, [handleKeyPress, handleTouchOrClick]);
 
   return (
     <mesh {...props} ref={ref}>

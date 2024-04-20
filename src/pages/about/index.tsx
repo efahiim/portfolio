@@ -1,9 +1,10 @@
 import React from "react";
 
 import CTA from "@components/cta";
-import { experiences, skills } from "@constants/index";
 import Skill from "@components/skill";
 import Experiences from "@components/experiences";
+
+import { experiences, skills } from "@constants/index";
 
 const About: React.FunctionComponent = () => (
   <section className="max-container">

@@ -3,48 +3,40 @@ import { Canvas } from "@react-three/fiber";
 import { Euler, Vector3 } from "three";
 
 import Loader from "@components/loader";
-import Island from "@models/island";
+import Popup from "@components/popup";
+
 import Sky from "@models/sky";
 import Plane from "@models/plane";
-import Popup from "@components/popup";
-import { IslandData, PlaneData } from "@interfaces/index";
-import sakura from "@assets/sakura.mp3";
+
+import { PlaneData } from "@interfaces/index";
+
+import wind from "@assets/sounds/wind.mp3";
+import plane from "@assets/sounds/plane.mp3";
 import { soundoff, soundon } from "@assets/icons";
 
 const Home: React.FunctionComponent = () => {
-  const audioRef = useRef(new Audio(sakura));
-  const [isRotating, setIsRotating] = useState<boolean>(false);
+  const windAudioRef = useRef(new Audio(wind));
+  const planeAudioRef = useRef(new Audio(plane));
   const [isMoving, setIsMoving] = useState<boolean>(false);
   const [currentStage, setCurrentStage] = useState<number>(1);
   const [isPlayingMusic, setIsPlayingMusic] = useState<boolean>(false);
 
   useEffect(() => {
     if (isPlayingMusic) {
-      audioRef.current.play();
+      windAudioRef.current.play();
+      planeAudioRef.current.play();
     }
-
-    return () => audioRef.current.pause();
+    
+    return () => {
+      windAudioRef.current.pause();
+      planeAudioRef.current.pause();
+    }
   }, [isPlayingMusic]);
 
-  audioRef.current.volume = 0.1;
-  audioRef.current.loop = true;
-
-  // const adjustIsland = (): IslandData => {
-  //   let islandData: IslandData = {
-  //     scale: [1, 1, 1] as unknown as Vector3,
-  //     position: [0, -6.5, -43] as unknown as Vector3,
-  //     rotation: [0.1, 4.7, 0] as unknown as Euler,
-  //   };
-
-  //   if (window.innerWidth < 768) {
-  //     islandData = {
-  //       ...islandData,
-  //       scale: [0.9, 0.9, 0.9] as unknown as Vector3,
-  //     };
-  //   }
-
-  //   return islandData;
-  // };
+  windAudioRef.current.volume = 0.03;
+  windAudioRef.current.loop = true;
+  planeAudioRef.current.volume = 0.01;
+  planeAudioRef.current.loop = true;
 
   const adjustPlane = (): PlaneData => {
     let planeData: PlaneData = {
@@ -64,19 +56,16 @@ const Home: React.FunctionComponent = () => {
     return planeData;
   };
 
-  // const islandData = adjustIsland();
   const planeData = adjustPlane();
 
   return (
     <section className="w-full h-screen relative">
-      <div className="absolute top-28 left-0 right-0 z-10 flex items-center justify-center">
+      <div className="absolute top-[25%] left-0 right-0 z-10 flex items-center justify-center">
         {currentStage && <Popup currentStage={currentStage} />}
       </div>
 
       <Canvas
-        className={`w-full h-screen bg-transparent ${
-          isRotating ? "cursor-grabbing" : "cursor-grab"
-        }`}
+        className="w-full h-screen bg-transparent"
         camera={{ near: 0.1, far: 1000 }}
       >
         <Suspense fallback={<Loader />}>
@@ -93,15 +82,6 @@ const Home: React.FunctionComponent = () => {
 
           <Sky />
 
-          {/* <Island
-            scale={islandData.scale}
-            position={islandData.position}
-            rotation={islandData.rotation}
-            isRotating={isRotating}
-            setIsRotating={setIsRotating}
-            setCurrentStage={setCurrentStage}
-          /> */}
-          
           <Plane
             // @ts-expect-error: Three.js
             scale={planeData.scale}
@@ -119,8 +99,8 @@ const Home: React.FunctionComponent = () => {
         <img
           src={!isPlayingMusic ? soundoff : soundon}
           alt="jukebox"
-          onClick={() => setIsPlayingMusic(!isPlayingMusic)}
-          className="w-10 h-10 cursor-pointer object-contain"
+          onClick={() => setIsPlayingMusic(prevState => !prevState)}
+          className="w-10 h-10 object-contain"
         />
       </div>
     </section>

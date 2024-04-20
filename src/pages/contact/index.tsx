@@ -2,10 +2,12 @@ import React, { Suspense, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { Canvas } from "@react-three/fiber";
 
-import Fox, { ActionName } from "@models/fox";
 import Loader from "@components/loader";
-import useAlert from "@hooks/useAlert";
 import Alert from "@components/alert";
+
+import Fox, { ActionName } from "@models/fox";
+
+import useAlert from "@hooks/useAlert";
 
 interface FormInputs {
   name: string;
