@@ -82,7 +82,7 @@ const Home: React.FunctionComponent = () => {
       planeData = {
         ...planeData,
         scale: [1, 1, 1] as unknown as Vector3,
-        position: [-1, -1, 0] as unknown as Vector3,
+        position: [-1, -0.5, 0] as unknown as Vector3,
       };
     }
 
