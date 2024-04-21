@@ -116,6 +116,7 @@ const Cursor: React.FunctionComponent = () => {
 
     const links = document.querySelectorAll("a");
     const buttons = document.querySelectorAll("button");
+    const anchors = document.querySelectorAll("a.btn");
 
     links.forEach((link) => {
       link.addEventListener("mouseover", handleLinksHover);
@@ -125,6 +126,13 @@ const Cursor: React.FunctionComponent = () => {
     buttons.forEach((button) => {
       button.addEventListener("mouseover", handleLinksHover);
       button.addEventListener("mouseleave", handleLinksUnhover);
+    });
+
+    anchors.forEach((anchor) => {
+      // @ts-expect-error: Anchor
+      anchor.addEventListener("mouseover", handleLinksHover);
+      // @ts-expect-error: Anchor
+      anchor.addEventListener("mouseleave", handleLinksUnhover);
     });
 
     return () => {
@@ -140,6 +148,13 @@ const Cursor: React.FunctionComponent = () => {
       buttons.forEach((button) => {
         button.removeEventListener("mouseover", handleLinksHover);
         button.removeEventListener("mouseleave", handleLinksUnhover);
+      });
+
+      anchors.forEach((anchor) => {
+        // @ts-expect-error: Anchor
+        anchor.removeEventListener("mouseover", handleLinksHover);
+        // @ts-expect-error: Anchor
+        anchor.removeEventListener("mouseleave", handleLinksUnhover);
       });
 
       setIsHovering(false);
