@@ -154,7 +154,7 @@ const Home: React.FunctionComponent = () => {
               | React.LegacyRef<HTMLParagraphElement>
               | undefined
           }
-          className="sm:text-xl sm:leading-snug text-center px-8 text-black mx-auto w-full opacity-0 absolute bottom-12"
+          className="sm:text-xl sm:leading-snug text-center px-8 text-black mx-auto w-full opacity-0 absolute bottom-20 lg:bottom-10"
         >
           Tip:{" "}
           {(isMobile || isTablet) && (
