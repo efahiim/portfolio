@@ -7,7 +7,14 @@ const CTA: React.FunctionComponent = () => (
       Have a project in mind? <br className="sm:block hidden" />
       Let’s build something together!
     </p>
-    <Link to="/contact" className="btn">
+    <Link
+      to="/contact"
+      className="btn"
+      style={{
+        clipPath:
+          "polygon(15% 0, 85% 0, 100% 50%, 85% 100%, 15% 100%, 0% 50%)",
+      }}
+    >
       Contact
     </Link>
   </section>

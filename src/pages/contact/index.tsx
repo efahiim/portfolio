@@ -167,9 +167,9 @@ const Contact: React.FunctionComponent = () => {
           <ambientLight intensity={0.5} />
           <Suspense fallback={<Loader />}>
             <Fox
-              scale={[0.5, 0.5, 0.5]}
-              position={[0, 0, 0]}
-              rotation={[12.6, -0.6, 0]}
+              scale={[0.6, 0.6, 0.6]}
+              position={[0.5, -0.5, 0]}
+              rotation={[12.6, -0.8, 0]}
               currentAnimation={currentAnimation}
             />
           </Suspense>

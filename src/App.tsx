@@ -19,7 +19,7 @@ const App: React.FunctionComponent = () => {
         </Routes>
       </Router>
 
-      <Cursor />
+      {window.innerWidth >= 1024 && <Cursor />}
     </main>
   );
 };

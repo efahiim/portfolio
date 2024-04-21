@@ -21,7 +21,7 @@ const Cursor: React.FunctionComponent = () => {
   const [isClicking, setIsClicking] = useState<boolean>(false);
 
   const outerSize = isHovering || isClicking ? 35 : 25;
-  const innerSize = isHovering ? 25 : 5;
+  const innerSize = isHovering ? 25 : 10;
 
   const lerp = (x: number, y: number, a: number): number => x * (1 - a) + y * a;
 
@@ -90,9 +90,15 @@ const Cursor: React.FunctionComponent = () => {
   };
 
   const handleMouseDown = (event: MouseEvent): void => {
-    event.stopPropagation();
-    event.preventDefault();
-    setIsClicking(true);
+    const inputs = document.querySelectorAll("input");
+    const textareas = document.querySelectorAll("textarea");
+    const fields = [...inputs, ...textareas];
+    
+    if (event.target !== fields.find((field) => event.target === field)) {
+      event.stopPropagation();
+      event.preventDefault();
+      setIsClicking(true);
+    }
   };
 
   const handleMouseUp = (event: MouseEvent): void => {
@@ -109,10 +115,16 @@ const Cursor: React.FunctionComponent = () => {
     window.addEventListener("pointerup", handleMouseUp);
 
     const links = document.querySelectorAll("a");
+    const buttons = document.querySelectorAll("button");
 
     links.forEach((link) => {
       link.addEventListener("mouseover", handleLinksHover);
       link.addEventListener("mouseleave", handleLinksUnhover);
+    });
+
+    buttons.forEach((button) => {
+      button.addEventListener("mouseover", handleLinksHover);
+      button.addEventListener("mouseleave", handleLinksUnhover);
     });
 
     return () => {
@@ -123,6 +135,11 @@ const Cursor: React.FunctionComponent = () => {
       links.forEach((link) => {
         link.removeEventListener("mouseover", handleLinksHover);
         link.removeEventListener("mouseleave", handleLinksUnhover);
+      });
+
+      buttons.forEach((button) => {
+        button.removeEventListener("mouseover", handleLinksHover);
+        button.removeEventListener("mouseleave", handleLinksUnhover);
       });
 
       setIsHovering(false);
@@ -138,7 +155,7 @@ const Cursor: React.FunctionComponent = () => {
             | React.LegacyRef<HTMLDivElement>
             | undefined
         }
-        className="fixed top-0 left-0 border-2 border-gradient rounded-full flex justify-center items-center pointer-events-none z-50"
+        className="fixed top-0 left-0 border-2 border-white rounded-full flex justify-center items-center pointer-events-none z-50"
         style={{
           width: outerSize,
           height: outerSize,
@@ -151,7 +168,7 @@ const Cursor: React.FunctionComponent = () => {
             | React.LegacyRef<HTMLDivElement>
             | undefined
         }
-        className="fixed top-0 left-0 bg-gradient-to-r from-[#00c6ff] rounded-full flex justify-center items-center pointer-events-none z-50"
+        className="fixed top-0 left-0 bg-[#00c6ff]/70 rounded-full flex justify-center items-center pointer-events-none z-50"
         style={{
           width: innerSize,
           height: innerSize,

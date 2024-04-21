@@ -45,11 +45,11 @@ a {
   }
 
   .input {
-    @apply bg-white border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2.5 font-normal shadow-card;
+    @apply bg-white border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2.5 font-normal shadow-card cursor-none;
   }
 
   .textarea {
-    @apply block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-200 focus:ring-blue-500 focus:border-blue-500 mt-2.5 font-normal shadow-card;
+    @apply block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-200 focus:ring-blue-500 focus:border-blue-500 mt-2.5 font-normal shadow-card cursor-none;
   }
 
   .btn {
@@ -57,7 +57,7 @@ a {
   }
 
   .header {
-    @apply flex justify-between items-center sm:px-16 px-8 py-4 max-w-5xl mx-auto absolute top-0 bg-transparent z-10 right-0 left-0;
+    @apply flex justify-between items-center sm:px-16 px-8 fixed top-2 z-10 right-0 left-0;
   }
 
   .footer {
@@ -86,7 +86,11 @@ a {
 }
 
 .border-gradient {
-  @apply bg-gradient-to-r from-[#00c6ff];
+  @apply bg-gradient-to-r from-transparent via-[#00c6ff] to-transparent;
+}
+
+.white-gradient {
+  @apply bg-gradient-to-r from-transparent via-[#ffffff] to-transparent;
 }
 
 .glassmorphism {

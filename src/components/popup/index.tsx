@@ -26,16 +26,22 @@ const InfoBox: React.FunctionComponent<InfoBoxProps> = ({
   currentStage,
 }: InfoBoxProps) => {
   const stageRef = useRef();
-  
+
   useGSAP(() => {
     gsap.to(stageRef.current, {
       opacity: 1,
-      duration: 1,
+      duration: 2,
     });
   }, [currentStage]);
 
   return (
-    <div ref={stageRef} className="opacity-0">
+    <div
+      ref={stageRef}
+      className="opacity-0 px-20 2xl:px-4 py-4 border-gradient w-full md:w-[90%] lg:w-[80%] xl:w-[60%] 2xl:w-[40%]"
+      style={{
+        clipPath: "polygon(10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%, 0% 50%)",
+      }}
+    >
       <p className="font-medium sm:text-xl text-center text-black">{text}</p>
       {/* <Link to={link} className="neo-btn">
       {buttonText}
@@ -54,27 +60,27 @@ const Popup: React.FunctionComponent<PopupProps> = ({
   useGSAP(() => {
     gsap.to(introRef.current, {
       opacity: 1,
-      duration: 1,
+      duration: 2,
     });
-    
+
     gsap.to(flyingRef.current, {
       opacity: 1,
-      duration: 1,
+      duration: 1.5,
     });
   }, [currentStage]);
 
   const renderContent: any = {
     1: (
-      <h1 ref={introRef} className="sm:text-xl sm:leading-snug text-center py-4 px-8 text-black mx-5 opacity-0">
+      <h1
+        ref={introRef}
+        className="sm:text-xl sm:leading-snug text-center py-4 px-4 text-black mx-5 opacity-0 border-gradient w-full md:w-[90%] lg:w-[80%] xl:w-[60%] 2xl:w-[40%]"
+        style={{
+          clipPath:
+            "polygon(10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%, 0% 50%)",
+        }}
+      >
         Hi, I am <span className="font-semibold">Isfaaq</span> 👋
         <br />A Software Engineer from Mauritius.
-        <br />
-        You can either click on the <span className="font-semibold">
-          left
-        </span>{" "}
-        and the <span className="font-semibold">right</span> of the screen or
-        use the keyboard <span className="font-semibold">arrow left</span> and{" "}
-        <span className="font-semibold">arrow right</span> keys to navigate.
       </h1>
     ),
     2: (
@@ -104,7 +110,7 @@ const Popup: React.FunctionComponent<PopupProps> = ({
     5: (
       <p
         ref={flyingRef}
-        className="font-medium sm:text-xl text-center text-black opacity-0"
+        className="font-medium sm:text-xl text-center text-black opacity-0 px-4 py-4"
       >
         Fasten your seatbelt! We are flying to your destination ✈️
       </p>
