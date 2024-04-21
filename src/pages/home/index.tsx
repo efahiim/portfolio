@@ -154,13 +154,13 @@ const Home: React.FunctionComponent = () => {
               | React.LegacyRef<HTMLParagraphElement>
               | undefined
           }
-          className="sm:text-xl sm:leading-snug text-center px-8 text-black mx-auto w-full opacity-0 absolute bottom-20 lg:bottom-10"
+          className="sm:text-xl sm:leading-snug text-center px-8 text-black mx-auto w-full opacity-0 absolute bottom-[6rem] lg:bottom-10"
         >
           Tip:{" "}
           {(isMobile || isTablet) && (
             <>
-              Tap the <span className="font-semibold">right side</span> or the{" "}
-              <span className="font-semibold">left side</span> of the screen to
+              Tap the <span className="font-semibold">right</span> or the{" "}
+              <span className="font-semibold">left</span> side of the screen to
               fly.
             </>
           )}
