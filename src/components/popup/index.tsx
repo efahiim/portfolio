@@ -80,7 +80,7 @@ const Popup: React.FunctionComponent<PopupProps> = ({
         }}
       >
         Hi, I am <span className="font-semibold">Isfaaq</span> 👋
-        <br />A Software Engineer from Mauritius.
+        <br />A Web Developer from Mauritius.
       </h1>
     ),
     2: (
@@ -112,7 +112,7 @@ const Popup: React.FunctionComponent<PopupProps> = ({
         ref={flyingRef}
         className="font-medium sm:text-xl text-center text-black opacity-0 px-4 py-4"
       >
-        Fasten your seatbelt! We are flying to your destination ✈️
+        Fasten your seatbelt! We are flying to your destination! ✈️
       </p>
     ),
   };

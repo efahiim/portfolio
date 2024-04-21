@@ -56,6 +56,10 @@ a {
     @apply text-black bg-white font-medium rounded-sm text-sm w-full sm:w-auto px-5 py-2.5 text-center flex gap-2 justify-center items-center;
   }
 
+  .cta-btn {
+    @apply text-black bg-[#00c6ff] font-medium rounded-sm text-sm w-full sm:w-auto px-5 py-2.5 text-center flex gap-2 justify-center items-center;
+  }
+
   .header {
     @apply flex justify-between items-center sm:px-16 px-8 fixed top-2 z-10 right-0 left-0;
   }

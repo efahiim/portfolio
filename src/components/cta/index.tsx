@@ -9,7 +9,7 @@ const CTA: React.FunctionComponent = () => (
     </p>
     <Link
       to="/contact"
-      className="btn"
+      className="cta-btn"
       style={{
         clipPath:
           "polygon(15% 0, 85% 0, 100% 50%, 85% 100%, 15% 100%, 0% 50%)",
