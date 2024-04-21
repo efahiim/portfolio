@@ -57,7 +57,7 @@ const Home: React.FunctionComponent = () => {
     };
   }, [isPlayingMusic]);
 
-  windAudioRef.current.volume = 0.03;
+  windAudioRef.current.volume = 0.05;
   windAudioRef.current.loop = true;
   planeAudioRef.current.volume = 0.01;
   planeAudioRef.current.loop = true;
@@ -109,7 +109,7 @@ const Home: React.FunctionComponent = () => {
 
   return (
     <>
-      <section className={`w-full h-[${window.innerHeight}px] lg:h-screen relative`}>
+      <section className="w-full h-[80vh] lg:h-screen relative">
         <div className="absolute top-[15%] left-0 right-0 z-10 flex items-center justify-center">
           {currentStage && <Popup currentStage={currentStage} />}
         </div>
