@@ -109,7 +109,7 @@ const Home: React.FunctionComponent = () => {
 
   return (
     <>
-      <section className="w-full h-[90vh] lg:h-screen relative">
+      <section className="w-full h-screen relative">
         <div className="absolute top-[15%] left-0 right-0 z-10 flex items-center justify-center">
           {currentStage && <Popup currentStage={currentStage} />}
         </div>
