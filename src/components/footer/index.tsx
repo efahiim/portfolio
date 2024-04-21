@@ -8,11 +8,11 @@ const Footer: React.FunctionComponent = () => (
     <hr className="border-slate-200" />
 
     <div className="footer-container">
-      <p>
+      <p className="text-center">
         © 2024 <strong>IMF Emambocus, MBCS</strong>. All rights reserved.
       </p>
 
-      <div className="flex gap-3 justify-center items-center">
+      <div className="flex gap-3 justify-center items-center w-full sm:w-auto">
         {socialLinks.map((link) => (
           <Link key={link.name} to={link.link} target="_blank">
             <img
