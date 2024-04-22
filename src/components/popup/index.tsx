@@ -37,7 +37,7 @@ const InfoBox: React.FunctionComponent<InfoBoxProps> = ({
   return (
     <div
       ref={stageRef}
-      className="opacity-0 px-10 2xl:px-4 py-4 border-gradient w-full md:w-[90%] lg:w-[80%] xl:w-[60%] 2xl:w-[40%] flex flex-col items-center gap-4"
+      className="opacity-0 px-10 2xl:px-4 py-4 border-gradient w-full md:w-[90%] lg:w-[80%] xl:w-[60%] 2xl:w-[50%] flex flex-col items-center gap-4"
       style={{
         clipPath: "polygon(10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%, 0% 50%)",
       }}
@@ -73,7 +73,7 @@ const Popup: React.FunctionComponent<PopupProps> = ({
     1: (
       <h1
         ref={introRef}
-        className="sm:text-xl sm:leading-snug text-center py-4 px-4 text-black mx-5 opacity-0 border-gradient w-full md:w-[90%] lg:w-[80%] xl:w-[60%] 2xl:w-[40%]"
+        className="sm:text-xl sm:leading-snug text-center py-4 px-4 text-black mx-5 opacity-0 border-gradient w-full md:w-[90%] lg:w-[80%] xl:w-[60%] 2xl:w-[50%]"
         style={{
           clipPath:
             "polygon(10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%, 0% 50%)",
