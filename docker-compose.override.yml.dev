@@ -1,0 +1,16 @@
+services:
+  apache:
+    expose:
+      - "80"
+    networks:
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.imfemambocus.rule=Host(`imfemambocus.com`)"
+      - "traefik.http.routers.imfemambocus.entrypoints=websecure"
+      - "traefik.http.routers.imfemambocus.tls=true"
+      - "traefik.http.services.imfemambocus.loadbalancer.server.port=80"
+      - "traefik.http.routers.imfemambocus.tls.certresolver=cloudflare"
+networks:
+  traefik:
+    external: true
