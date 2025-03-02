@@ -1,4 +1,11 @@
 services:
+  node:
+    image: node:22-alpine
+    working_dir: /app
+    volumes:
+      - .:/app
+      - /app/node_modules  # Avoid overwriting node_modules
+    command: ["npm", "install", "&&","npm", "run", "build"]
   apache:
     expose:
       - "80"
