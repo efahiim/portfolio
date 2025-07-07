@@ -20,6 +20,7 @@ package-lock.json
 
 # production
 /build
+docker-compose.override.yml
 
 # misc
 .DS_Store
