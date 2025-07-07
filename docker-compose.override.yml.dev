@@ -1,0 +1,23 @@
+services:
+  node:
+    image: node:22-alpine
+    working_dir: /app
+    volumes:
+      - .:/app
+      - /app/node_modules  # Avoid overwriting node_modules
+    command: ["sh", "-c", "npm install && npm run build"]
+  apache:
+    expose:
+      - "80"
+    networks:
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.imfemambocus.rule=Host(`imfemambocus.com`)"
+      - "traefik.http.routers.imfemambocus.entrypoints=websecure"
+      - "traefik.http.routers.imfemambocus.tls=true"
+      - "traefik.http.services.imfemambocus.loadbalancer.server.port=80"
+      - "traefik.http.routers.imfemambocus.tls.certresolver=cloudflare"
+networks:
+  traefik:
+    external: true
