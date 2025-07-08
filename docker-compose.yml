@@ -1,7 +1,0 @@
-services:
-    apache:
-        build:
-            context: .
-            dockerfile: docker/apache/Dockerfile
-        volumes:
-            - ./dist:/var/www/html

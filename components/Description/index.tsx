@@ -18,7 +18,7 @@ export default function index() {
                     })
                 }
                 </p>
-                <motion.p variants={opacity} animate={isInView ? "open" : "closed"}>The combination of my React expertise, leadership experience and performance optimization skills positions me uniquely in frontend engineering.</motion.p>
+                <motion.p variants={opacity} animate={isInView ? "open" : "closed"}>The combination of my React expertise, leadership experience and performance optimisation skills positions me uniquely in frontend engineering.</motion.p>
                 <div data-scroll data-scroll-speed={0.1}>
                     <Rounded className={styles.button}>
                         <p>About me</p>
