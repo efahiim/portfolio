@@ -34,7 +34,7 @@ export default function index() {
                             <a href="mailto:efahiim@gmail.com">efahiim@gmail.com</a>
                         </Rounded>
                         <Rounded>
-                            <a href="tel:+447777944645">+44 7777 944 645</a>
+                            <a href="tel:+23058173526">+230 5817 3526</a>
                         </Rounded>
                 </div>
                 <div className={styles.info}>
@@ -48,7 +48,7 @@ export default function index() {
                         <span>
                             <h3>Socials</h3>
                             <Magnetic>
-                                <a href="https://www.linkedin.com/in/isfaaqemambocus-frontendengineer/" target="_blank">LinkedIn</a>
+                                <a href="https://www.linkedin.com/in/isfaaqemambocus-softwareengineer/" target="_blank">LinkedIn</a>
                             </Magnetic>
                         </span>
                         <span>

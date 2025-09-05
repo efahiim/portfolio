@@ -17,7 +17,7 @@ export default function index() {
     const button = useRef(null);
 
     useEffect( () => {
-      if(isActive) setIsActive(false)
+        if(isActive) setIsActive(false)
     }, [pathname])
 
     useLayoutEffect( () => {
